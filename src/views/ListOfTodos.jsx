@@ -1,14 +1,23 @@
 import React from 'react'
+import useCheckboxStatus from '../Hooks/useCheckboxStatus';
 
-const listOfTodos = ({ id, title, completed }) => {
-    console.log(id, title, completed);
+const listOfTodos = ({ title, completed }) => {
+
+    const { currentStatus, handleCurrentStatus } = useCheckboxStatus(completed);
+
     return (
+      <div>
         <div>
-            <div>Title: {title}
-                <input type="checkbox" checked={completed}/>
-            </div>
+          Title: {title}
+          <input
+            type="checkbox"
+            name="todo"
+            checked={currentStatus}
+            onChange={handleCurrentStatus}
+          />
         </div>
-    )
+      </div>
+    );
 }
 
 export default listOfTodos
