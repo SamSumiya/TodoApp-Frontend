@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 import ListOfTodos from '../views/ListOfTodos';
 
 const ControlsTodos = ({ todos }) => {
-  
   return (
     <>
+      <h2>My Todo List</h2>
       <ol aria-label="list-of-todos">
         {todos.map((todo) => {
           return (
             <li key={todo.id}>
-              <ListOfTodos
-                title={todo.title}
-                completed={todo.completed}
-              />
+              <ListOfTodos title={todo.title} completed={todo.completed} />
             </li>
           );
         })}
