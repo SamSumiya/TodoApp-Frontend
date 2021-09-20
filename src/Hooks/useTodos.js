@@ -8,7 +8,7 @@ const useTodos = () => {
    
     useEffect(() => {
         getTodosFunc()
-            .then((res) => console.log(res))
+            .then(setTodos)
             .finally(() => setLoading(false));
     }, [])
 
