@@ -6,7 +6,7 @@ const ControlsTodos = ({ todos }) => {
 //   console.log(todos);
   return (
     <>
-      <ul aria-label="list-of-todos">
+      <ol aria-label="list-of-todos">
         {todos.map((todo) => {
           return <li key={todo.id}>
             <ListOfTodos
@@ -16,7 +16,7 @@ const ControlsTodos = ({ todos }) => {
             />
           </li>;
         })}
-      </ul>
+      </ol>
     </>
   );
 };

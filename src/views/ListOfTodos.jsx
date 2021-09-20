@@ -7,7 +7,6 @@ const listOfTodos = ({ id, title, completed }) => {
             <div>Title: {title}
                 <input type="checkbox" checked={completed}/>
             </div>
-            
         </div>
     )
 }
