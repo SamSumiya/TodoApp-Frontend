@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import listOfTodos from '../views/listOfTodos';
+import ListOfTodos from '../views/ListOfTodos';
 
 const ControlsTodos = ({ todos }) => {
-//   console.log(todos);
+  
   return (
     <>
-      <ul aria-label="list-of-todos">
+      <ol aria-label="list-of-todos">
         {todos.map((todo) => {
-          return <li key={todo.id}>
-            <listOfTodos
-              id={todo.id}
-              title={todo.title}
-              completed={todo.completed}
-            />
-          </li>;
+          return (
+            <li key={todo.id}>
+              <ListOfTodos
+                title={todo.title}
+                completed={todo.completed}
+              />
+            </li>
+          );
         })}
-      </ul>
+      </ol>
     </>
   );
 };
