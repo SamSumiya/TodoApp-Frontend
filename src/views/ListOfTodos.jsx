@@ -1,23 +1,30 @@
-import React from 'react'
+import React from 'react';
 import useCheckboxStatus from '../Hooks/useCheckboxStatus';
+import PropTypes from 'prop-types';
 
-const listOfTodos = ({ title, completed }) => {
+const ListOfTodos = ({ title, completed }) => {
+  const { currentStatus, handleCurrentStatus } = useCheckboxStatus(completed);
 
-    const { currentStatus, handleCurrentStatus } = useCheckboxStatus(completed);
-
-    return (
+  return (
+    <div>
       <div>
-        <div>
-          Title: {title}
-          <input
-            type="checkbox"
-            name="todo"
-            checked={currentStatus}
-            onChange={handleCurrentStatus}
-          />
-        </div>
+        Task: {title}
+        <input
+          aria-label="user-input-field"
+          type="checkbox"
+          name="todo"
+          checked={currentStatus}
+          value={currentStatus}
+          onChange={handleCurrentStatus}
+        />
       </div>
-    );
-}
+    </div>
+  );
+};
 
-export default listOfTodos
+export default ListOfTodos;
+
+ListOfTodos.propTypes = {
+  title: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired,
+};
