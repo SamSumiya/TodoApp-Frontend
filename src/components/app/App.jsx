@@ -1,5 +1,8 @@
 import React from 'react';
+import Todos from '../../containers/Todos';
 
 export default function App() {
-  return <h1>Hello World</h1>;
+  return <>
+  <Todos />
+  </>;
 }
