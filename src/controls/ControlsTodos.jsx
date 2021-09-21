@@ -6,6 +6,11 @@ const ControlsTodos = ({ todos }) => {
   return (
     <>
       <h2>My Todo List</h2>
+      <form action="">
+        <label htmlFor="user-input">Task: </label>
+        <input type="text" name="user-input" placeholder="Enter a task" id='user-input' />
+        <button> Add </button>
+      </form>
       <ol aria-label="list-of-todos">
         {todos.map((todo) => {
           return (

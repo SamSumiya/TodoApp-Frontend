@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const useCheckbox = (initialStatus = false) => {
+  const [currentStatus, setCurrentStatus] = useState(initialStatus);
 
-    const [currentStatus, setCurrentStatus] = useState(initialStatus)
+  const handleCurrentStatus = () => {
+    setCurrentStatus(!currentStatus);
+  };
 
-    const handleCurrentStatus = () => {
-        setCurrentStatus(!currentStatus)
-    }
+  return { currentStatus, handleCurrentStatus };
+};
 
-    return { currentStatus, handleCurrentStatus };
-}
-
-export default useCheckbox
+export default useCheckbox;
