@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react';
 import { postOneTodo } from '../service/todoAppFuncs';
 
-const usePostTodo = (initialDescription = '', initialIsCompleted = false) => {
+const usePostTodo = (initialTitle = '', initialIsCompleted = false) => {
   const [newTodo, setNewTodo] = useState({});
-  const [description, setDescription] = useState('');
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [title, setDescription] = useState(initialTitle);
+  const [isCompleted, setIsCompleted] = useState(initialIsCompleted);
+
+  useEffect(() => {
+    postOneTodo().then((title, isCompleted) => setNewTodo(title, isCompleted));
+  }, []);
 
   const handleDescriptionChange = () => {
-    setDescription(description);
+    setDescription(title);
   };
 
   const handleIsCompletedChange = () => {
     setIsCompleted(!isCompleted);
   };
 
-  useEffect(() => {
-    postOneTodo().then((initialDescription, isCompleted) =>
-      setNewTodo(initialDescription, isCompleted)
-    );
-  }, []);
+  
 
   return { newTodo, handleDescriptionChange, handleIsCompletedChange };
 };
