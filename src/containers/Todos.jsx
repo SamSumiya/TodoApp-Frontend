@@ -1,9 +1,20 @@
 import React from 'react';
-import useTodos from '../Hooks/useTodos';
+import useGetTodos from '../Hooks/useGetTodos';
 import ControlsTodos from '../controls/ControlsTodos';
+import usePostTodo from '../Hooks/usePostTodos';
+import { postOneTodo } from '../service/todoAppFuncs';
+import { getTodosFunc } from '../service/todoAppFuncs';
 
 const Todos = () => {
-  const { todos, loading } = useTodos();
+  const { todos, loading, setTodos } = useGetTodos();
+  const { title, handleTitleChange } = usePostTodo();
+
+  const onFormSubmit = async(event) => {
+    event.preventDefault();
+    await postOneTodo(title);
+    const updatedTodoList = await getTodosFunc();
+    setTodos(updatedTodoList);
+  };
 
   if (loading)
     return (
@@ -12,7 +23,12 @@ const Todos = () => {
 
   return (
     <>
-      <ControlsTodos todos={todos} />
+      <ControlsTodos
+        todos={todos}
+        title={title}
+        onFormSubmit={onFormSubmit}
+        handleTitleChange={handleTitleChange}
+      />
     </>
   );
 };
