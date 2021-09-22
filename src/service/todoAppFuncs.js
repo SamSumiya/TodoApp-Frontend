@@ -13,14 +13,14 @@ export const getTodosFunc = () => {
     );
 };
 
-export const postOneTodo = (description, isCompeleted) => {
+export const postOneTodo = (description) => {
   return fetch(URL, {
     method: 'POST', 
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json', 
     }, 
-    body: JSON.stringify({description, isCompeleted})
+    body: JSON.stringify({description})
   }) 
     .then(res => res.json()) 
     .catch(err => console.log(err))

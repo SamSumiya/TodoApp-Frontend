@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'; 
 import { getTodosFunc } from '../service/todoAppFuncs.js';  
 
-const useTodos = () => {
+const useGetTodos = () => {
 
     const [todos, setTodos] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -12,9 +12,7 @@ const useTodos = () => {
             .finally(() => setLoading(false));
     }, [])
 
-    return (
-        {todos, loading}
-    )
+    return { todos, loading, setTodos };
 }
 
-export default useTodos
+export default useGetTodos

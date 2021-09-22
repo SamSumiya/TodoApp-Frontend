@@ -1,25 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ListOfTodos from '../views/ListOfTodos';
-import usePostTodo from '../Hooks/usePostTodo';
 
-const ControlsTodos = ({ todos }) => {
-
-  // const { newTodo, handleDescriptionChange, handleIsCompletedChange } = usePostTodo() 
+const ControlsTodos = ({ todos, title, onFormSubmit, handleTitleChange }) => {
 
   return (
     <>
       <h2>My Todo List</h2>
-      <form action="">
+      <form onSubmit={onFormSubmit}>
         <label htmlFor="user-input">Task: </label>
         <input
           type="text"
           name="user-input"
           placeholder="Enter a task"
-          id='user-input'
-          
+          id="user-input"
+          value={title}
+          onChange={(event) => handleTitleChange(event)}
         />
-        <button> Add </button>
+        <button type="submit"> Add </button>
       </form>
       <ol aria-label="list-of-todos">
         {todos.map((todo) => {
