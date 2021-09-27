@@ -2,8 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ListOfTodos from '../views/ListOfTodos';
 
-const ControlsTodos = ({ todos, title, onFormSubmit, handleTitleChange }) => {
-
+const ControlsTodos = ({
+  todos,
+  title,
+  updatedTodo,
+  onFormSubmit,
+  handleTitleChange,
+  handleUpdateTitleFunction,
+}) => {
   return (
     <>
       <h2>My Todo List</h2>
@@ -23,7 +29,13 @@ const ControlsTodos = ({ todos, title, onFormSubmit, handleTitleChange }) => {
         {todos.map((todo) => {
           return (
             <li key={todo.id}>
-              <ListOfTodos title={todo.title} completed={todo.completed} />
+              <ListOfTodos
+                id={todo.id}
+                title={todo.title}
+                completed={todo.completed}
+                handleUpdateTitleFunction={handleUpdateTitleFunction}
+                updatedTodo={updatedTodo}
+              />
             </li>
           );
         })}
