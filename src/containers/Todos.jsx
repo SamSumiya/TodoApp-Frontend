@@ -14,7 +14,7 @@ const Todos = () => {
   const onFormSubmit = async (event) => {
     event.preventDefault();
     await postOneTodo(title);
-    setTodos(updatedTodoList);
+    // setTodos(updatedTodoList);
   };
 
   if (loading)

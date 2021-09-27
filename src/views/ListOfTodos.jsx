@@ -2,7 +2,8 @@ import React from 'react';
 import useCheckboxStatus from '../Hooks/useCheckboxStatus';
 import usePutTodos from '../Hooks/usePutTodos';
 import PropTypes from 'prop-types';
-import { updateOnePost } from '../service/todoAppFuncs';
+import { deleteOnePost, updateOnePost } from '../service/todoAppFuncs';
+// import useDeleteTodos from '../Hooks/useDeleteTodos';
 
 const ListOfTodos = ({
   id,
@@ -11,8 +12,7 @@ const ListOfTodos = ({
   updatedTodo,
   handleUpdateTitleFunction,
 }) => {
-  const { currentStatus, setCurrentStatus, handleCurrentStatus } =
-    useCheckboxStatus(completed);
+  const { currentStatus, setCurrentStatus, handleCurrentStatus } = useCheckboxStatus(completed);
 
   const onFormSubmit = async(event) => {
     event.preventDefault();
@@ -38,13 +38,10 @@ const ListOfTodos = ({
             aria-label="user-update-input-field"
             type="text"
             name="edit"
-            onChange={(event) =>
-              handleUpdateTitleFunction( event.target.value,)
-            }
+            onChange={(event) => handleUpdateTitleFunction(event.target.value)}
           />
-          <button onClick={handleUpdateTitleFunction(updatedTodo)}>
-            Edit
-          </button>
+          <button onClick={handleUpdateTitleFunction(updatedTodo)}>Edit</button>
+          <button onClick={() => deleteOnePost(id)}>Delete</button>
         </form>
       </div>
     </div>

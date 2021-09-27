@@ -1,18 +1,15 @@
-import React, { useEffect } from 'react'
-import { deleteOnePost } from '../service/todoAppFuncs'
+// import React, { useState, useEffect } from 'react'
 
-const useDeleteTodos = () => {
 
-  useEffect(() => {
-    deleteOnePost()
-      .then(() => { Message: 'Todo item was deleted' })
-  }, [])
+// const useDeleteTodos = (id) => {
+//   const [message, setMessage] = useState('')
 
-  return (
-    <div>
-      
-    </div>
-  )
-}
+//   useEffect(() => {
+//     deleteOnePost(id)
+//       .then(setMessage('Todo item was deleted'))
+//   }, [])
 
-export default useDeleteTodos
+//   return { message }
+// }
+
+// export default useDeleteTodos
