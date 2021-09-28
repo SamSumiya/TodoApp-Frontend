@@ -40,6 +40,7 @@ export const updateOnePost = (id, description, isCompleted) => {
 
 
 export const deleteOnePost = (id) => {
+  console.log(id)
   return fetch(`${URL}/${id}`, {
     method: 'DELETE',
   });

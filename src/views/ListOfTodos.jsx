@@ -12,11 +12,14 @@ const ListOfTodos = ({
   updatedTodo,
   handleUpdateTitleFunction,
 }) => {
-  const { currentStatus, setCurrentStatus, handleCurrentStatus } = useCheckboxStatus(completed);
+  const { currentStatus, setCurrentStatus, handleCurrentStatus } =
+    useCheckboxStatus(completed);
 
-  const onFormSubmit = async(event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
-    await updateOnePost(id, updatedTodo, !completed)
+    // await handleUpdateTitleFunction(updatedTodo)}
+    // await updateOnePost(id, updatedTodo, completed)
+    // handleUpdateTitleFunction(updatedTodo)}
   };
 
   return (
@@ -30,7 +33,7 @@ const ListOfTodos = ({
             name="todo"
             checked={currentStatus}
             value={currentStatus}
-            onChange={(event) => setCurrentStatus(event.target.value)}
+            onChange={() => setCurrentStatus(!currentStatus)}
           />
           <div></div>
           <label htmlFor="">Update</label>
@@ -38,11 +41,23 @@ const ListOfTodos = ({
             aria-label="user-update-input-field"
             type="text"
             name="edit"
+            value={updatedTodo}
             onChange={(event) => handleUpdateTitleFunction(event.target.value)}
           />
-          <button onClick={handleUpdateTitleFunction(updatedTodo)}>Edit</button>
-          <button onClick={() => deleteOnePost(id)}>Delete</button>
         </form>
+        <button
+          onClick={async () => {
+            // await handleUpdateTitleFunction(updatedTodo),
+            
+              await updateOnePost(id, updatedTodo, currentStatus);
+          }}>
+          Edit
+        </button>
+
+        <button
+          onClick={async () => await deleteOnePost(id)}>
+          Delete
+        </button>
       </div>
     </div>
   );
