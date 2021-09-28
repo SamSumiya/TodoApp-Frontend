@@ -7,6 +7,7 @@ import { getOneTodo } from '../service/todoAppFuncs';
 // import useDeleteTodos from '../Hooks/useDeleteTodos';
 
 const ListOfTodos = ({
+  todo, 
   id,
   title,
   completed,
@@ -18,7 +19,7 @@ const ListOfTodos = ({
 
   const onFormSubmit = async (event) => {
     event.preventDefault(); 
-    handleUpdateTitleFunction(updatedTodo)
+    // handleUpdateTitleFunction(updatedTodo)
     await updateOnePost(id, updatedTodo, currentStatus); 
   };
 
@@ -45,7 +46,14 @@ const ListOfTodos = ({
             value={updatedTodo}
             onChange={(event) => handleUpdateTitleFunction(event.target.value)}
           />
-          <button>Edit</button>
+          <button
+            onClick={ () => 
+              // handleUpdateTitleFunction(updatedTodo), 
+                console.log(todo)
+            }
+          >
+            Edit
+          </button>
         </form>
         <button onClick={async () => await deleteOnePost(id)}>Delete</button>
       </div>

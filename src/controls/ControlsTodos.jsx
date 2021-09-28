@@ -26,10 +26,11 @@ const ControlsTodos = ({
         <button type="submit"> Add </button>
       </form>
       <ol aria-label="list-of-todos">
-        {todos.map((todo) => {
+        {todos.sort((a, b) => a.id - b.id).map((todo) => {
           return (
             <li key={todo.id}>
               <ListOfTodos
+                todo={todo}
                 id={todo.id}
                 title={todo.title}
                 completed={todo.completed}
