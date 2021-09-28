@@ -1,20 +1,12 @@
-import { useState, useEffect } from 'react';
-import { postOneTodo } from '../service/todoAppFuncs';
+import { useState } from 'react';
 
 const usePostTodo = () => {
-  // const [newTodo, setNewTodo] = useState({});
   const [title, setTitle] = useState('');
-
-  // useEffect(() => {
-  //   postOneTodo()
-  //     .then((title, isCompleted) => setNewTodo(title, isCompleted))
-  //     .catch(err => console.error(err.message))
-  // }, []);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
-  
+
   return { title, handleTitleChange };
 };
 

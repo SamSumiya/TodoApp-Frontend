@@ -1,24 +1,53 @@
 import React from 'react';
 import useCheckboxStatus from '../Hooks/useCheckboxStatus';
-import usePostTodo from '../Hooks/usePostTodos';
+import usePutTodos from '../Hooks/usePutTodos';
 import PropTypes from 'prop-types';
+import { deleteOnePost, updateOnePost } from '../service/todoAppFuncs';
+import { getOneTodo } from '../service/todoAppFuncs';
+// import useDeleteTodos from '../Hooks/useDeleteTodos';
 
-const ListOfTodos = ({ title, completed }) => {
-  const { currentStatus, handleCurrentStatus } = useCheckboxStatus(completed);
+const ListOfTodos = ({
+  id,
+  title,
+  completed,
+  updatedTodo,
+  handleUpdateTitleFunction,
+}) => {
+  const { currentStatus, setCurrentStatus, handleCurrentStatus } =
+    useCheckboxStatus(completed);
+
+  const onFormSubmit = async (event) => {
+    event.preventDefault(); 
+    handleUpdateTitleFunction(updatedTodo)
+    await updateOnePost(id, updatedTodo, currentStatus); 
+  };
 
 
   return (
     <div>
       <div>
         Task: {title}
-        <input
-          aria-label="user-input-field"
-          type="checkbox"
-          name="todo"
-          checked={currentStatus}
-          value={currentStatus}
-          onChange={handleCurrentStatus}
-        />
+        <form onSubmit={onFormSubmit}>
+          <input
+            aria-label="user-input-field"
+            type="checkbox"
+            name="todo"
+            checked={currentStatus}
+            value={currentStatus}
+            onChange={() => setCurrentStatus(!currentStatus)}
+          />
+          <div></div>
+          <label htmlFor="">Update</label>
+          <input
+            aria-label="user-update-input-field"
+            type="text"
+            name="edit"
+            value={updatedTodo}
+            onChange={(event) => handleUpdateTitleFunction(event.target.value)}
+          />
+          <button>Edit</button>
+        </form>
+        <button onClick={async () => await deleteOnePost(id)}>Delete</button>
       </div>
     </div>
   );
@@ -27,6 +56,7 @@ const ListOfTodos = ({ title, completed }) => {
 export default ListOfTodos;
 
 ListOfTodos.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired,
 };

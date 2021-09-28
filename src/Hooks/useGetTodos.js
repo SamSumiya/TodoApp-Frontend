@@ -1,18 +1,17 @@
-import { useState, useEffect } from 'react'; 
-import { getTodosFunc } from '../service/todoAppFuncs.js';  
+import { useState, useEffect } from 'react';
+import { getTodosFunc } from '../service/todoAppFuncs.js';
 
 const useGetTodos = () => {
+  const [todos, setTodos] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    const [todos, setTodos] = useState(null)
-    const [loading, setLoading] = useState(true)
-   
-    useEffect(() => {
-        getTodosFunc()
-            .then(setTodos)
-            .finally(() => setLoading(false));
-    }, [])
+  useEffect(() => {
+    getTodosFunc()
+      .then(setTodos)
+      .finally(() => setLoading(false));
+  }, [todos]);
 
-    return { todos, loading, setTodos };
-}
+  return { todos, loading, setTodos };
+};
 
-export default useGetTodos
+export default useGetTodos;

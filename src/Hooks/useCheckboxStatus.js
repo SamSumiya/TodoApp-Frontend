@@ -7,7 +7,7 @@ const useCheckbox = (initialStatus = false) => {
     setCurrentStatus(!currentStatus);
   };
 
-  return { currentStatus, handleCurrentStatus };
+  return { currentStatus, setCurrentStatus, handleCurrentStatus };
 };
 
 export default useCheckbox;
