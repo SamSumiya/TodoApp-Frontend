@@ -5,10 +5,8 @@ import ListOfTodos from '../views/ListOfTodos';
 const ControlsTodos = ({
   todos,
   title,
-  // updatedTodo,
   onFormSubmit,
   handleTitleChange,
-  // handleUpdateTitleFunction,
 }) => {
   return (
     <>
@@ -34,8 +32,6 @@ const ControlsTodos = ({
                 id={todo.id}
                 title={todo.title}
                 completed={todo.completed}
-                // handleUpdateTitleFunction={handleUpdateTitleFunction}
-                // updatedTodo={updatedTodo}
               />
             </li>
           );
@@ -50,6 +46,7 @@ ControlsTodos.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
+      onFormSubmit: PropTypes.func, 
       completed: PropTypes.bool.isRequired,
     })
   ),

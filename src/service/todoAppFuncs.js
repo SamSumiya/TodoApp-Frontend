@@ -13,13 +13,6 @@ export const getTodosFunc = () => {
     );
 };
 
-// export const getOneTodo = (id) => {
-//   return fetch(`${URL}/${id}`)
-//     .then((response) => response.json())
-//     .then((todo) => console.log(todo))
-// };
-
-
 export const postOneTodo = (description) => {
   return fetch(URL, {
     method: 'POST',

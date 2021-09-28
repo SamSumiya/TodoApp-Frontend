@@ -3,24 +3,18 @@ import useCheckboxStatus from '../Hooks/useCheckboxStatus';
 import usePutTodos from '../Hooks/usePutTodos';
 import PropTypes from 'prop-types';
 import { deleteOnePost, updateOnePost } from '../service/todoAppFuncs';
-import { getOneTodo } from '../service/todoAppFuncs';
-// import useDeleteTodos from '../Hooks/useDeleteTodos';
 
 const ListOfTodos = ({
   todo, 
   id,
   title,
   completed,
-  // updatedTodo,
-  // handleUpdateTitleFunction,
 }) => {
-  const { currentStatus, setCurrentStatus, handleCurrentStatus } =
-    useCheckboxStatus(completed);
+  const { currentStatus, setCurrentStatus } = useCheckboxStatus(completed);
   const { updatedTodo, handleUpdateTitleFunction } = usePutTodos();
 
   const onFormSubmit = async (event) => {
     event.preventDefault(); 
-    // handleUpdateTitleFunction(updatedTodo)
     await updateOnePost(id, updatedTodo, currentStatus); 
   };
 
@@ -44,15 +38,10 @@ const ListOfTodos = ({
             aria-label="user-update-input-field"
             type="text"
             name="edit"
-            value={updatedTodo} // id: 1 => first todo
+            value={updatedTodo} 
             onChange={(event) => handleUpdateTitleFunction(event.target.value)}
           />
-          <button
-            onClick={ () => 
-              // handleUpdateTitleFunction(updatedTodo), 
-                console.log(todo)
-            }
-          >
+          <button>
             Edit
           </button>
         </form>
