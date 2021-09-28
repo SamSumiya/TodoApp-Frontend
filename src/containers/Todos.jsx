@@ -1,9 +1,10 @@
 import React from 'react';
 import useGetTodos from '../Hooks/useGetTodos';
 import ControlsTodos from '../controls/ControlsTodos';
+
 import usePostTodo from '../Hooks/usePostTodos';
 import { postOneTodo } from '../service/todoAppFuncs';
-import { getTodosFunc } from '../service/todoAppFuncs';
+// import { getTodosFunc } from '../service/todoAppFuncs';
 import usePutTodos from '../Hooks/usePutTodos';
 
 const Todos = () => {
@@ -32,6 +33,7 @@ const Todos = () => {
         handleTitleChange={handleTitleChange}
         handleUpdateTitleFunction={handleUpdateTitleFunction}
       />
+
     </>
   );
 };
