@@ -6,7 +6,7 @@ const usePutTodos = () => {
   const handleUpdateTitleFunction = (userInput) => {
     setUpdateTodo(userInput);
   };
-  
+
   return { updatedTodo, handleUpdateTitleFunction };
 }
 

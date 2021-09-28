@@ -3,6 +3,7 @@ import useCheckboxStatus from '../Hooks/useCheckboxStatus';
 import usePutTodos from '../Hooks/usePutTodos';
 import PropTypes from 'prop-types';
 import { deleteOnePost, updateOnePost } from '../service/todoAppFuncs';
+import { getOneTodo } from '../service/todoAppFuncs';
 // import useDeleteTodos from '../Hooks/useDeleteTodos';
 
 const ListOfTodos = ({
@@ -15,18 +16,18 @@ const ListOfTodos = ({
   const { currentStatus, setCurrentStatus, handleCurrentStatus } =
     useCheckboxStatus(completed);
 
-  const onFormSubmit = (event) => {
-    event.preventDefault();
-    // await handleUpdateTitleFunction(updatedTodo)}
-    // await updateOnePost(id, updatedTodo, completed)
-    // handleUpdateTitleFunction(updatedTodo)}
+  const onFormSubmit = async (event) => {
+    event.preventDefault(); 
+    handleUpdateTitleFunction(updatedTodo)
+    await updateOnePost(id, updatedTodo, currentStatus); 
   };
+
 
   return (
     <div>
       <div>
         Task: {title}
-        <form action="" onSubmit={onFormSubmit}>
+        <form onSubmit={onFormSubmit}>
           <input
             aria-label="user-input-field"
             type="checkbox"
@@ -44,20 +45,9 @@ const ListOfTodos = ({
             value={updatedTodo}
             onChange={(event) => handleUpdateTitleFunction(event.target.value)}
           />
+          <button>Edit</button>
         </form>
-        <button
-          onClick={async () => {
-            // await handleUpdateTitleFunction(updatedTodo),
-            
-              await updateOnePost(id, updatedTodo, currentStatus);
-          }}>
-          Edit
-        </button>
-
-        <button
-          onClick={async () => await deleteOnePost(id)}>
-          Delete
-        </button>
+        <button onClick={async () => await deleteOnePost(id)}>Delete</button>
       </div>
     </div>
   );
