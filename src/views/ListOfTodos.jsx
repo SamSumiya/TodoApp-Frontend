@@ -43,7 +43,7 @@ const ListOfTodos = ({
             aria-label="user-update-input-field"
             type="text"
             name="edit"
-            value={updatedTodo}
+            value={todo.updatedTodo}
             onChange={(event) => handleUpdateTitleFunction(event.target.value)}
           />
           <button
