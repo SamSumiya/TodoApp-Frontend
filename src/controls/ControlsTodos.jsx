@@ -5,10 +5,10 @@ import ListOfTodos from '../views/ListOfTodos';
 const ControlsTodos = ({
   todos,
   title,
-  updatedTodo,
+  // updatedTodo,
   onFormSubmit,
   handleTitleChange,
-  handleUpdateTitleFunction,
+  // handleUpdateTitleFunction,
 }) => {
   return (
     <>
@@ -34,8 +34,8 @@ const ControlsTodos = ({
                 id={todo.id}
                 title={todo.title}
                 completed={todo.completed}
-                handleUpdateTitleFunction={handleUpdateTitleFunction}
-                updatedTodo={updatedTodo}
+                // handleUpdateTitleFunction={handleUpdateTitleFunction}
+                // updatedTodo={updatedTodo}
               />
             </li>
           );

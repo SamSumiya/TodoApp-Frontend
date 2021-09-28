@@ -11,11 +11,12 @@ const ListOfTodos = ({
   id,
   title,
   completed,
-  updatedTodo,
-  handleUpdateTitleFunction,
+  // updatedTodo,
+  // handleUpdateTitleFunction,
 }) => {
   const { currentStatus, setCurrentStatus, handleCurrentStatus } =
     useCheckboxStatus(completed);
+  const { updatedTodo, handleUpdateTitleFunction } = usePutTodos();
 
   const onFormSubmit = async (event) => {
     event.preventDefault(); 
@@ -43,7 +44,7 @@ const ListOfTodos = ({
             aria-label="user-update-input-field"
             type="text"
             name="edit"
-            value={todo.updatedTodo}
+            value={updatedTodo} // id: 1 => first todo
             onChange={(event) => handleUpdateTitleFunction(event.target.value)}
           />
           <button

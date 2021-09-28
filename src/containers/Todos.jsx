@@ -28,10 +28,10 @@ const Todos = () => {
       <ControlsTodos
         todos={todos}
         title={title}
-        updatedTodo={updatedTodo}
+        // updatedTodo={updatedTodo}
         onFormSubmit={onFormSubmit}
         handleTitleChange={handleTitleChange}
-        handleUpdateTitleFunction={handleUpdateTitleFunction}
+        // handleUpdateTitleFunction={handleUpdateTitleFunction}
       />
 
     </>
