@@ -1,5 +1,6 @@
 // const URL = 'https://jsonplaceholder.typicode.com/posts?userId=1';
-const URL = 'http://localhost:7890/api/v1/todos';
+// const URL = 'http://localhost:7890/api/v1/todos';
+const URL = process.env.URI
 
 export const getTodosFunc = () => {
   return fetch(URL)
