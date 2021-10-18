@@ -1,6 +1,8 @@
 // const URL = 'https://jsonplaceholder.typicode.com/posts?userId=1';
 // const URL = 'http://localhost:7890/api/v1/todos';
-const URL = process.env.URI
+// const URL = 'https://elastic-wozniak-f39042.netlify.app/'
+// const URL = process.env.REACT_APP_HEROKU_URI;
+const URL = 'https://full-stack-todos.herokuapp.com/api/v1/todos';
 
 export const getTodosFunc = () => {
   return fetch(URL)
